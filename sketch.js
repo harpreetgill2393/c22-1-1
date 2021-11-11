@@ -1,8 +1,10 @@
-//name spacing
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+
+// Only for debugging code, is this needed, not otherwise
+// const Render = Matter.Render;
 
 var myengine,myworld;
 var ground, ball;
@@ -15,9 +17,9 @@ function setup(){
 
     //Code for brown ground
     var ground_options ={
-        isStatic: true, 
+        isStatic: true,
+      
     }
-
     ground = Bodies.rectangle(400,390,800,20,ground_options);
     World.add(myworld,ground);
     console.log(ground);
@@ -51,26 +53,27 @@ function setup(){
 
     // Code for ball
     var ball_options ={
-        // isStatic : false,
-        // isStatic: false
-        // isStatic = false,
-        // isStatic : true,
+        isStatic: false,
         restitution: 1.3
     }
 
-    // ball = Bodies.circle(590,100,20);
-    // World.add(myworld,ball);
+    ball = Bodies.circle(590,100,20, ball_options);
+    World.add(myworld,ball);
+    
 
-    // ball = Bodies.ellipse(590,100,20,
-    //                      ball_options);
-    // World.add(myworld,ball);
+    // Only for debugging code, is this needed, not otherwise
+    // var render = Render.create({
+    //   element: document.body,
+    //   engine: myengine,
+    //   options: {
+    //     width: 1600,
+    //     height: 700,
+    //     wireframes: false
+    //   }
+    // });
+    // Render.run(render);
 
-    // ball = Bodies.circle(590,100,20,
-    //                      ball_options);
-    // World.add(myworld,ball);
-
-    // ball = Bodies(590,100,20);
-    // World.add(myworld,ball);
+    //console.log(ball);
 }
 
 function draw(){
